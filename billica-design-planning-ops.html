@@ -1,0 +1,224 @@
+<title>빌리카 디자인 운영 시스템</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: single reading column, status bar chart up top, tables for rules and process */
+:root{
+  --bg:#f5f7f8; --surface:#ffffff; --fg:#14232b; --muted:#5b6b73; --line:#d9e1e5;
+  --accent:#0b6e7f; --accent-soft:#dff0f3; --warn:#b4540a; --warn-soft:#fbe9d9;
+  --font-body:'Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1a20; --surface:#17252d; --fg:#e6eef1; --muted:#97a9b1; --line:#2a3d47;
+  --accent:#4fc1d3; --accent-soft:#17383f; --warn:#f0a35e; --warn-soft:#3a2a1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1a20; --surface:#17252d; --fg:#e6eef1; --muted:#97a9b1; --line:#2a3d47;
+  --accent:#4fc1d3; --accent-soft:#17383f; --warn:#f0a35e; --warn-soft:#3a2a1a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+main{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+header{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.25;font-weight:900;margin:0;text-wrap:balance;word-break:keep-all}
+h2{font-size:21px;font-weight:700;margin:0 0 4px;text-wrap:balance;word-break:keep-all}
+h3{font-size:15px;font-weight:700;margin:0}
+p{margin:0;word-break:keep-all}
+.lead{color:var(--muted);max-width:62ch}
+section{display:flex;flex-direction:column;gap:16px}
+.sub{color:var(--muted);font-size:14px}
+.note{background:var(--warn-soft);border-left:3px solid var(--warn);padding:12px 16px;font-size:14px;border-radius:0 6px 6px 0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar{display:grid;grid-template-columns:110px 1fr 44px;gap:12px;align-items:center;font-size:14px}
+.bar .track{height:12px;background:var(--accent-soft);border-radius:2px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);width:var(--w)}
+.bar b{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.grid2>*{min-width:0}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+li{word-break:keep-all}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+code,.mono{font-family:var(--font-mono);font-size:13px}
+code{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px;word-break:break-all}
+.flow{display:flex;flex-wrap:wrap;gap:8px}
+.flow span{background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:13px}
+.flow span.on{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:500}
+.check{display:flex;flex-direction:column;gap:8px;list-style:none;padding:0}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:6px;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.check label{cursor:pointer}
+.check input:checked+label{color:var(--muted);text-decoration:line-through}
+.prog{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:480px){.bar{grid-template-columns:84px 1fr 36px;gap:8px}}
+</style>
+
+<main>
+<header>
+  <div class="eyebrow">BILLY · MO 디자인 · 운영 시스템 초안</div>
+  <h1>빌리카 디자인·기획서 운영 시스템</h1>
+  <p class="lead">Figma 「[MO] BILLY Design」 페이지(약 2,800개 노드, 모바일 375px)의 프레임 구조를 분석해 만든 초안입니다. 파일 구조, 네이밍, 기획서 양식, 업무 흐름, 품질 기준을 한 번에 정리합니다.</p>
+  <p class="note">시각 스크린샷과 색상·타이포 토큰은 가져오지 못했습니다(Figma 이미지 호스트 접근 차단). 토큰 항목은 추후 보강이 필요합니다.</p>
+</header>
+
+<section id="status">
+  <div><h2>1. 디자인 현황</h2><p class="sub">도메인별 프레임 수. 정상 화면과 오류·빈 상태·완료 상태 프레임을 합산한 값입니다.</p></div>
+  <div class="panel bars" role="list" aria-label="도메인별 프레임 수">
+    <div class="bar" role="listitem"><span>MY빌리카</span><div class="track"><div class="fill" style="--w:100%"></div></div><b>140</b></div>
+    <div class="bar" role="listitem"><span>예약</span><div class="track"><div class="fill" style="--w:46%"></div></div><b>65</b></div>
+    <div class="bar" role="listitem"><span>회원</span><div class="track"><div class="fill" style="--w:24%"></div></div><b>33</b></div>
+    <div class="bar" role="listitem"><span>차량 목록·상세</span><div class="track"><div class="fill" style="--w:21%"></div></div><b>29</b></div>
+    <div class="bar" role="listitem"><span>홈·메인·공통</span><div class="track"><div class="fill" style="--w:18%"></div></div><b>~25</b></div>
+    <div class="bar" role="listitem"><span>고객센터</span><div class="track"><div class="fill" style="--w:16%"></div></div><b>23</b></div>
+    <div class="bar" role="listitem"><span>마이페이지</span><div class="track"><div class="fill" style="--w:16%"></div></div><b>22</b></div>
+    <div class="bar" role="listitem"><span>이용안내</span><div class="track"><div class="fill" style="--w:11%"></div></div><b>16</b></div>
+    <div class="bar" role="listitem"><span>SMS결제·제휴사</span><div class="track"><div class="fill" style="--w:7%"></div></div><b>10</b></div>
+    <div class="bar" role="listitem"><span>유류비 외</span><div class="track"><div class="fill" style="--w:6%"></div></div><b>9</b></div>
+    <div class="bar" role="listitem"><span>No GNB</span><div class="track"><div class="fill" style="--w:5%"></div></div><b>7</b></div>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>도메인</th><th>핵심 플로우</th></tr></thead>
+    <tbody>
+      <tr><td>예약</td><td>로그인 유도 → 보험·부가상품 → 운전자 정보 → 결제 → 예약 완료/실패</td></tr>
+      <tr><td>MY빌리카</td><td>예약내역, 예약취소, 기간변경(출발 전/후), 보험변경, 운전자 등록·추가</td></tr>
+      <tr><td>회원</td><td>로그인, 아이디 찾기, 비밀번호 재설정, 회원가입</td></tr>
+      <tr><td>고객센터</td><td>자주 찾는 질문, 공지, 이벤트·당첨자, 전화·1:1 문의</td></tr>
+      <tr><td>이용안내</td><td>차종별 요금, 지점·셔틀버스, 차량 매뉴얼, 제휴할인</td></tr>
+      <tr><td>유류비 외 / SMS결제</td><td>계약서 보기, 배차위치, 유류비 환불, 비회원 링크 결제</td></tr>
+    </tbody></table></div>
+  <div class="grid2">
+    <div class="panel"><h3>관찰된 패턴</h3><ul>
+      <li>모든 기능에 오류·없음·마감·완료 상태 프레임이 따로 있음</li>
+      <li>공통 컴포넌트: Header, Bottom_BTN, Button, Status Bar, Dim 팝업</li>
+      <li>변경 이력은 <code>[YYMMDD] 사유</code> 텍스트 노트로 기록</li>
+      <li>사용자 유형 3종(일반회원, 비회원, SK구성원)에 따라 전체메뉴가 분기</li>
+    </ul></div>
+    <div class="panel"><h3>개선 필요</h3><ul>
+      <li>프레임명 오타: <code>차랑목록</code>, <code>얘약공유하기</code>, <code>침 이용 동의</code></li>
+      <li>같은 이름의 중복 프레임이 다수</li>
+      <li>모든 도메인이 한 페이지에 있어 캔버스가 5만 px를 넘음</li>
+      <li>상태 프레임과 기획 문서가 연결되어 있지 않음</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="structure">
+  <div><h2>2. Figma 구조와 네이밍</h2></div>
+  <div class="panel"><h3>파일·페이지 구성</h3>
+    <p class="sub" style="margin-bottom:10px">도메인별로 페이지를 나누고, 각 페이지 안은 플로우 순서 → 상태 순으로 정렬합니다.</p>
+    <div class="flow"><span>00_Cover/Changelog</span><span>01_Foundation</span><span>02_Components</span><span class="on">10_예약</span><span class="on">20_MY빌리카</span><span>30_회원</span><span>40_고객센터</span><span>50_이용안내</span><span>90_Archive</span></div>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>대상</th><th>규칙</th><th>예시</th></tr></thead>
+    <tbody>
+      <tr><td>화면</td><td><code>BILLY_MO_{도메인}_{화면}_{상태}</code></td><td><code>BILLY_MO_예약_결제_실패</code></td></tr>
+      <tr><td>상태 접미사</td><td>고정 목록 사용</td><td><code>_입력전 _입력후 _오류 _없음 _마감 _완료 _실패 _팝업</code></td></tr>
+      <tr><td>컴포넌트</td><td><code>Billy/{카테고리}/{이름}/{variant}</code></td><td><code>Billy/Button/Primary/Disabled</code></td></tr>
+      <tr><td>변경 노트</td><td><code>[YYMMDD] 요약 / 담당 / Jira 키</code></td><td><code>[251024] 에러페이지 추가 / 홍길동 / BIL-123</code></td></tr>
+    </tbody></table></div>
+  <div class="panel"><h3>디자인 시스템</h3><ul>
+    <li>Foundation: 색상, 타이포, 간격, 라운드, 그림자를 Figma Variables로 정의</li>
+    <li>Components: Header, Button, Bottom_BTN, Input, Tooltip, Dim 팝업, 카드, 탭, 칩</li>
+    <li>하드코딩 값 금지. 신규 컴포넌트는 리뷰 후 등록</li>
+    <li>토큰은 개발 쪽 Code Connect 매핑 대상으로 관리</li>
+  </ul></div>
+</section>
+
+<section id="spec">
+  <div><h2>3. 기획서 표준 양식</h2><p class="sub">화면 한 장당 기획서 한 장. 아래 10개 항목을 고정 순서로 작성합니다.</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th style="width:44px">#</th><th>항목</th><th>작성 내용</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>메타</td><td>화면 ID, 화면명, 도메인, 담당(기획·디자인·개발), 상태, 버전</td></tr>
+      <tr><td class="mono">2</td><td>목적과 진입 경로</td><td>이 화면이 해결하는 문제, 이전 화면과 진입 조건</td></tr>
+      <tr><td class="mono">3</td><td>사용자 유형별 차이</td><td>일반회원 / 비회원 / SK구성원</td></tr>
+      <tr><td class="mono">4</td><td>구성 요소와 데이터</td><td>요소별 노출 조건과 데이터 출처</td></tr>
+      <tr><td class="mono">5</td><td>상태 정의</td><td>정상, 입력중, 오류, 빈 상태, 마감, 완료</td></tr>
+      <tr><td class="mono">6</td><td>유효성과 오류 문구</td><td>입력 규칙, 오류 메시지 원문</td></tr>
+      <tr><td class="mono">7</td><td>예외 처리</td><td>결제 실패, 재고 없음, 일정 불가, 시간 초과</td></tr>
+      <tr><td class="mono">8</td><td>연동 시스템</td><td>결제, 본인인증, 알림톡, 제휴사</td></tr>
+      <tr><td class="mono">9</td><td>분석 이벤트</td><td>이벤트명, 발생 시점, 파라미터</td></tr>
+      <tr><td class="mono">10</td><td>변경 이력</td><td>날짜, 변경 요약, 담당, 이슈 키</td></tr>
+    </tbody></table></div>
+  <p>화면 ID 체계: <code>{도메인코드}-{번호}-{상태번호}</code>. 예) <code>RSV-012-03</code>은 예약 도메인의 12번 화면(결제), 3번 상태(실패)입니다.</p>
+</section>
+
+<section id="process">
+  <div><h2>4. 업무 프로세스</h2></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>단계</th><th>산출물</th><th>담당</th><th>완료 기준</th></tr></thead>
+    <tbody>
+      <tr><td>요구 접수</td><td>요청서(Jira)</td><td>기획</td><td>목적·범위·일정 명시</td></tr>
+      <tr><td>기획</td><td>기획서 초안, 플로우</td><td>기획</td><td>상태·예외 표 작성</td></tr>
+      <tr><td>디자인</td><td>Figma 화면, 상태 프레임</td><td>디자인</td><td>네이밍·토큰 규칙 준수</td></tr>
+      <tr><td>리뷰</td><td>코멘트 해소</td><td>기획·디자인·개발</td><td>3자 합의</td></tr>
+      <tr><td>핸드오프</td><td>Dev 모드 전환, 스펙</td><td>디자인</td><td>상태 누락 0건</td></tr>
+      <tr><td>개발·QA</td><td>구현본, QA 결과</td><td>개발·QA</td><td>디자인 QA 통과</td></tr>
+      <tr><td>아카이브</td><td>최종본, 변경 로그</td><td>기획</td><td>이력 기록 완료</td></tr>
+    </tbody></table></div>
+  <div class="panel"><h3>버전 관리</h3><ul>
+    <li>큰 변경은 <code>v{메이저}.{마이너}</code>, 소규모 변경은 변경 노트로 기록</li>
+    <li>개발 반영이 끝나면 이전 버전을 <code>90_Archive</code>로 이동</li>
+    <li>변경 노트와 Jira 이슈를 반드시 연결</li>
+  </ul></div>
+</section>
+
+<section id="quality">
+  <div><h2>5. 품질 체크리스트</h2><p class="sub">핸드오프 전에 확인합니다. 체크 상태는 이 화면에서만 유지됩니다.</p></div>
+  <div class="panel">
+    <ul class="check" id="checklist">
+      <li><input type="checkbox" id="c1"><label for="c1">모든 입력 화면에 오류·빈 상태·로딩 프레임이 있다</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">결제·예약·변경 플로우에 실패와 재고 없음 케이스가 있다</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">사용자 유형(일반·비회원·SK구성원)에 따라 분기되는 화면을 각각 표시했다</label></li>
+      <li><input type="checkbox" id="c4"><label for="c4">터치 영역 44px 이상, 명도 대비 WCAG AA를 충족한다</label></li>
+      <li><input type="checkbox" id="c5"><label for="c5">오류 메시지와 버튼명이 UX 라이팅 가이드와 일치한다</label></li>
+      <li><input type="checkbox" id="c6"><label for="c6">프레임명 오타와 중복이 없다</label></li>
+    </ul>
+    <p class="prog" id="prog" style="margin-top:12px">0 / 6 완료</p>
+  </div>
+</section>
+
+<section id="next">
+  <div><h2>6. 즉시 실행 과제</h2><p class="sub">우선순위 순서입니다.</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th style="width:44px">순서</th><th>과제</th><th>효과</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>프레임명 오타·중복 정정, 네이밍 규칙 확정</td><td>검색·핸드오프 오류 감소</td></tr>
+      <tr><td class="mono">2</td><td>단일 페이지를 도메인별 페이지/파일로 분리</td><td>탐색 속도, 버전 충돌 감소</td></tr>
+      <tr><td class="mono">3</td><td>MY빌리카·예약 도메인에 기획서 양식 우선 적용</td><td>프레임 수 상위 2개 도메인 정리</td></tr>
+      <tr><td class="mono">4</td><td>Foundation 토큰 추출, Variables 등록</td><td>하드코딩 제거, 개발 연동</td></tr>
+      <tr><td class="mono">5</td><td>변경 노트 양식 표준화, Jira 연동</td><td>이력 추적</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="open">
+  <div><h2>7. 확인이 필요한 사항</h2></div>
+  <div class="panel"><ul>
+    <li>기획서 저장 위치(Confluence, Figma Spec 등)</li>
+    <li>사용 중인 이슈 트래커와 승인 권한 체계</li>
+    <li>도메인별 담당자 지정</li>
+    <li>처음 받은 링크 두 개가 같은 노드였습니다. 다른 페이지(예: PC 버전)가 있으면 링크를 다시 공유해 주세요.</li>
+  </ul></div>
+</section>
+</main>
+
+<script>
+(function(){
+  var boxes=document.querySelectorAll('#checklist input'),prog=document.getElementById('prog'),key='billica-checks';
+  var saved=[];try{saved=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
+  function update(){
+    var n=0,state=[];
+    boxes.forEach(function(b){if(b.checked)n++;state.push(b.checked)});
+    prog.textContent=n+' / '+boxes.length+' 완료';
+    try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}
+  }
+  boxes.forEach(function(b,i){b.checked=!!saved[i];b.addEventListener('change',update)});
+  update();
+})();
+</script>
