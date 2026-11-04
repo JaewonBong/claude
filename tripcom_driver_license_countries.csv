@@ -1,0 +1,246 @@
+﻿순번,구분,국가/지역명,ISO 코드,Top 순위,지원 여부,Trip countryId
+1,A,Afghanistan,AF,,지원,7
+2,A,Albania,AL,,지원,5
+3,A,Algeria,DZ,,지원,6
+4,A,American Samoa,AS,,지원,239
+5,A,Andorra,AD,,지원,200
+6,A,Angola,AO,,지원,13
+7,A,Anguilla,AI,,지원,275
+8,A,Antarctica,AQ,,미지원,
+9,A,Antigua and Barbuda,AG,,지원,201
+10,A,Argentina,AR,,지원,8
+11,A,Armenia,AM,,지원,175
+12,A,Aruba,AW,,지원,171
+13,A,Australia,AU,,지원,15
+14,A,Austria,AT,,지원,14
+15,A,Azerbaijan,AZ,,지원,145
+16,B,Bahamas,BS,,지원,185
+17,B,Bahrain,BH,,지원,118
+18,B,Bangladesh,BD,,지원,68
+19,B,Barbados,BB,,지원,202
+20,B,Belarus,BY,,지원,151
+21,B,Belgium,BE,,지원,21
+22,B,Belize,BZ,,지원,210
+23,B,Benin,BJ,,지원,178
+24,B,Bermuda,BM,,지원,207
+25,B,Bhutan,BT,,지원,212
+26,B,Bolivia,BO,,지원,24
+27,B,Bosnia and Herzegovina,BA,,지원,209
+28,B,Botswana,BW,,지원,152
+29,B,Bouvet Island,BV,,미지원,
+30,B,Brazil,BR,,지원,19
+31,B,British Indian Ocean Territory,IO,,미지원,
+32,B,Brunei,BN,,지원,260
+33,B,Bulgaria,BG,,지원,20
+34,B,Burkina Faso,BF,,지원,213
+35,B,Burundi,BI,,지원,25
+36,C,Cambodia,KH,,지원,50
+37,C,Cameroon,CM,,지원,52
+38,C,Canada,CA,,지원,47
+39,C,Cape Verde,CV,,지원,219
+40,C,Caribbean Netherlands,BQ,,지원,259
+41,C,Cayman Islands,KY,,지원,223
+42,C,Central African Republic,CF,,지원,256
+43,C,Chad,TD,,지원,114
+44,C,Chile,CL,,지원,115
+45,C,China,CN,,지원,1
+46,C,Christmas Island,CX,,미지원,
+47,C,Cocos (Keeling) Islands,CC,,지원,284
+48,C,Colombia,CO,,지원,37
+49,C,Comoros,KM,,지원,224
+50,C,Congo (Democratic Republic),CD,,지원,36
+51,C,Congo (Republic),CG,,지원,271
+52,C,Cook Islands,CK,,지원,191
+53,C,Costa Rica,CR,,지원,38
+54,C,Côte d'Ivoire,CI,,지원,179
+55,C,Croatia,HR,,지원,164
+56,C,Cuba,CU,,지원,39
+57,C,Curaçao,CW,,지원,294
+58,C,Cyprus,CY,,지원,81
+59,C,Czech Republic,CZ,,지원,162
+60,D,Denmark,DK,,지원,27
+61,D,Djibouti,DJ,,지원,45
+62,D,Dominica,DM,,지원,217
+63,D,Dominican Republic,DO,,지원,276
+64,E,Ecuador,EC,,지원,155
+65,E,Egypt,EG,,지원,10
+66,E,El Salvador,SV,,지원,238
+67,E,Equatorial Guinea,GQ,,지원,214
+68,E,Eritrea,ER,,지원,184
+69,E,Estonia,EE,,지원,166
+70,E,Eswatini,SZ,,지원,196
+71,E,Ethiopia,ET,,지원,11
+72,F,Falkland Islands,FK,,지원,277
+73,F,Faroe Islands,FO,,지원,283
+74,F,Fiji,FJ,,지원,33
+75,F,Finland,FI,,지원,34
+76,F,France,FR,,지원,31
+77,F,French Guiana,GF,,지원,536010
+78,F,French Polynesia,PF,,지원,264
+79,F,French Southern Territories,TF,,미지원,
+80,G,Gabon,GA,,지원,49
+81,G,Gambia,GM,,지원,35
+82,G,Georgia,GE,,지원,180
+83,G,Germany,DE,,지원,28
+84,G,Ghana,GH,,지원,48
+85,G,Gibraltar,GI,,지원,287
+86,G,Greece,GR,,지원,96
+87,G,Greenland,GL,,지원,268
+88,G,Grenada,GD,,지원,220
+89,G,Guadeloupe,GP,,지원,261
+90,G,Guam,GU,,미지원,
+91,G,Guatemala,GT,,지원,90
+92,G,Guinea,GN,,지원,46
+93,G,Guinea-bissau,GW,,지원,222
+94,G,Guyana,GY,,지원,40
+95,H,Haiti,HT,,지원,41
+96,H,Heard Island and McDonald Islands,HM,,미지원,
+97,H,Honduras,HN,,지원,44
+98,H,"Hong Kong, China",HK,,지원,1001
+99,H,Hungary,HU,,지원,99
+100,I,Iceland,IS,,지원,22
+101,I,India,IN,,지원,107
+102,I,Indonesia,ID,4,지원,108
+103,I,Iran,IR,,지원,104
+104,I,Iraq,IQ,,지원,103
+105,I,Ireland,IE,,지원,12
+106,I,Israel,IL,,지원,105
+107,I,Italy,IT,,지원,106
+108,J,Jamaica,JM,,지원,101
+109,J,Japan,JP,5,지원,78
+110,J,Jordan,JO,,지원,110
+111,K,Kazakhstan,KZ,,지원,176
+112,K,Kenya,KE,,지원,54
+113,K,Kiribati,KI,,지원,221
+114,K,"Korea, Democratic People's Republic of",KP,,지원,26
+115,K,"Korea, Republic of",KR,,지원,42
+116,K,Kosovo,XK,,미지원,
+117,K,Kuwait,KW,,지원,53
+118,K,Kyrgyzstan,KG,,지원,143
+119,L,Laos,LA,,지원,55
+120,L,Latvia,LV,,지원,225
+121,L,Lebanon,LB,,지원,56
+122,L,Lesotho,LS,,지원,187
+123,L,Liberia,LR,,지원,59
+124,L,Libya,LY,,지원,60
+125,L,Liechtenstein,LI,,지원,226
+126,L,Lithuania,LT,,지원,57
+127,L,Luxembourg,LU,,지원,61
+128,M,"Macau, China",MO,,지원,1002
+129,M,Madagascar,MG,,지원,227
+130,M,Malawi,MW,,지원,186
+131,M,Malaysia,MY,,지원,2
+132,M,Maldives,MV,,지원,146
+133,M,Mali,ML,,지원,228
+134,M,Malta,MT,,지원,161
+135,M,Marshall Islands,MH,,지원,229
+136,M,Martinique,MQ,,지원,279
+137,M,Mauritania,MR,,지원,65
+138,M,Mauritius,MU,,지원,64
+139,M,Mayotte,YT,,지원,270
+140,M,Mexico,MX,,지원,72
+141,M,Micronesia,FM,,지원,230
+142,M,Moldova,MD,,지원,182
+143,M,Monaco,MC,,지원,231
+144,M,Mongolia,MN,,지원,67
+145,M,Montenegro,ME,,지원,257
+146,M,Montserrat,MS,,지원,299
+147,M,Morocco,MA,,지원,71
+148,M,Mozambique,MZ,,지원,157
+149,M,Myanmar,MM,,지원,70
+150,N,Namibia,NA,,지원,159
+151,N,Naoero,NR,,지원,234
+152,N,Nepal,NP,,지원,74
+153,N,Netherlands,NL,,지원,43
+154,N,New Caledonia,NC,,지원,263
+155,N,New Zealand,NZ,,지원,98
+156,N,Nicaragua,NI,,지원,198
+157,N,Niger,NE,,지원,158
+158,N,Nigeria,NG,,지원,75
+159,N,Niue,NU,,지원,236
+160,N,Norfolk Island,NF,,지원,285
+161,N,North Macedonia,MK,,지원,197
+162,N,Norway,NO,,지원,76
+163,O,Oman,OM,,지원,150
+164,P,Pakistan,PK,,지원,17
+165,P,Palau,PW,,지원,237
+166,P,Palestine,PS,,지원,205
+167,P,Panama,PA,,지원,18
+168,P,Papua New Guinea,PG,,지원,153
+169,P,Paraguay,PY,,지원,147
+170,P,Peru,PE,,지원,69
+171,P,Philippines,PH,2,지원,32
+172,P,Pitcairn,PN,,지원,679749
+173,P,Poland,PL,,지원,23
+174,P,Portugal,PT,,지원,77
+175,P,Puerto Rico,PR,,지원,208
+176,Q,Qatar,QA,,지원,163
+177,R,Reunion,RE,,지원,269
+178,R,Romania,RO,,지원,63
+179,R,Russia,RU,,지원,30
+180,R,Rwanda,RW,,지원,62
+181,S,Saint Barthélemy,BL,,지원,297
+182,S,"Saint Helena, Ascension and Tristan da Cunha",SH,,지원,273
+183,S,Saint Kitts and Nevis,KN,,지원,243
+184,S,Saint Lucia,LC,,지원,244
+185,S,Saint Martin,MF,,지원,291
+186,S,Saint Pierre and Miquelon,PM,,지원,289
+187,S,Saint Vincent and the Grenadines,VC,,지원,246
+188,S,Samoa,WS,,지원,296
+189,S,San Marino,SM,,지원,245
+190,S,Sao Tome and Principe,ST,,지원,242
+191,S,Saudi Arabia,SA,,지원,82
+192,S,Senegal,SN,,지원,156
+193,S,Serbia,RS,,지원,183
+194,S,Seychelles,SC,,지원,174
+195,S,Sierra Leone,SL,,지원,240
+196,S,Singapore,SG,,지원,3
+197,S,Sint Maarten,SX,,지원,295
+198,S,Slovakia,SK,,지원,247
+199,S,Slovenia,SI,,지원,84
+200,S,Solomon Islands,SB,,지원,248
+201,S,Somalia,SO,,지원,249
+202,S,South Africa,ZA,,지원,73
+203,S,South Georgia and the South Sandwich Islands,GS,,미지원,
+204,S,South Sudan,SS,,지원,301
+205,S,Spain,ES,,지원,95
+206,S,Sri Lanka,LK,,지원,83
+207,S,Sudan,SD,,지원,85
+208,S,Suriname,SR,,지원,181
+209,S,Svalbard and Jan Mayen,SJ,,미지원,
+210,S,Sweden,SE,,지원,79
+211,S,Switzerland,CH,,지원,80
+212,S,Syria,SY,,지원,100
+213,T,"Taiwan, China",TW,,지원,1003
+214,T,Tajikistan,TJ,,지원,250
+215,T,Tanzania,TZ,,지원,87
+216,T,Thailand,TH,1,지원,4
+217,T,Timor-Leste,TL,,지원,215
+218,T,Togo,TG,,지원,216
+219,T,Tokelau,TK,,지원,536511
+220,T,Tonga,TO,,지원,160
+221,T,Trinidad and Tobago,TT,,지원,252
+222,T,Tunisia,TN,,지원,88
+223,T,Türkiye (Turkey),TR,,지원,89
+224,T,Turkmenistan,TM,,지원,195
+225,T,Turks and Caicos Islands,TC,,지원,265
+226,T,Tuvalu,TV,,지원,253
+227,U,Uganda,UG,,지원,93
+228,U,Ukraine,UA,,지원,119
+229,U,United Arab Emirates,AE,,지원,9
+230,U,United Kingdom,GB,,지원,109
+231,U,United States,US,3,지원,66
+232,U,United States Minor outlying Islands,UM,,미지원,
+233,U,Uruguay,UY,,지원,94
+234,U,Uzbekistan,UZ,,지원,144
+235,V,Vanuatu,VU,,지원,254
+236,V,Vatican,VA,,지원,167
+237,V,Venezuela,VE,,지원,91
+238,V,Vietnam,VN,,지원,111
+239,V,"Virgin Islands, British",VG,,지원,282
+240,V,"Virgin Islands, U.S.",VI,,지원,280
+241,W,Wallis and Futuna,WF,,지원,286
+242,W,Western Sahara,EH,,미지원,
+243,Y,Yemen,YE,,지원,102
+244,Z,Zambia,ZM,,지원,112
+245,Z,Zimbabwe,ZW,,지원,51
